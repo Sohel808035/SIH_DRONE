@@ -1,11 +1,18 @@
 {
   "event_id": "",
-  "hazard": "",
-  "confidence": 0,
-  "priority": "",
-  "latitude": 0,
-  "longitude": 0,
-  "altitude": 0,
   "timestamp": "",
+  "priority": "",
+  "latitude": null,
+  "longitude": null,
+  "altitude": null,
+  "detections": [
+    {
+      "class_id": 0,
+      "class": "",
+      "confidence": 0.0,
+      "box": [0, 0, 0, 0]
+    }
+  ],
+  "people_count": 0,
   "image_path": ""
 }

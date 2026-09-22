@@ -1,0 +1,15 @@
+# Raspberry Pi 4B Requirements
+# Install on Raspberry Pi OS (64-bit, Python 3.11+):
+#   pip install -r requirements-rpi.txt
+
+# Core inference (CPU-only, no CUDA)
+ultralytics>=8.2.0
+opencv-python-headless>=4.8.0
+numpy>=1.24.0
+
+# Note: torch is pulled in by ultralytics.
+# For faster CPU inference on Raspberry Pi, consider:
+#   - Reducing imgsz to 320 in raspberry_pi/config/model.json
+#   - Exporting to ONNX: yolo export model=models/best.pt format=onnx
+# After ONNX export, set "backend": "onnx" in model.json and install:
+#   pip install onnxruntime

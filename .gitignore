@@ -2,24 +2,49 @@
 venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
 
-# Dataset
+# Datasets (local only — too large for GitHub)
 datasets/
+dataset/
+archive/
 
-# YOLO outputs
-runs/detect/val*/
-runs/detect/predict*/
+# YOLO training outputs
+runs/
 
-# Media
+# Model downloads (keep only models/best.pt which is committed)
+yolo11n.pt
+yolo11n-seg.pt
+weights/
+
+# Cache
+*.cache
+labels.cache
+*.cache.npy
+.pytest_cache/
+
+# Media files (not committed — use Git LFS if needed)
 *.jpg
 *.jpeg
 *.png
 *.mp4
 *.avi
+*.mov
+*.mkv
+*.gif
 
-# Cache
-*.cache
-labels.cache
-
-# VS Code
+# IDE
 .vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / local config overrides
+*.env
+.env
+local_config.json

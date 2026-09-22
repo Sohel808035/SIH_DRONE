@@ -1,0 +1,5 @@
+{
+  "enabled": false,
+  "transport": "null",
+  "note": "LoRa and MAVLink transports are NOT YET IMPLEMENTED. Set transport to 'console' for local logging. See raspberry_pi/communication/ for integration instructions."
+}

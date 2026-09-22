@@ -1,0 +1,8 @@
+{
+  "weights": "models/best.pt",
+  "backend": "auto",
+  "imgsz": 640,
+  "confidence": 0.20,
+  "iou": 0.45,
+  "device": "auto"
+}

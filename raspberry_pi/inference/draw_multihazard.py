@@ -1,52 +1,49 @@
+"""
+draw_multihazard.py — Draw all hazard detections onto a frame.
+
+Draws bounding boxes and labels for every detection in the list.
+Uses class_colors.py as the single authoritative colour source.
+"""
 import cv2
+from raspberry_pi.inference.class_colors import CLASS_COLORS, DEFAULT_COLOR
 
-COLORS = {
-    "fire": (0,0,255),          # Red
-    "smoke": (180,180,180),     # Gray
-    "flood": (255,0,0),         # Blue
-    "landslide": (42,42,165),   # Brown
-    "debris": (0,255,0),        # Green
-    "person": (0,255,255)       # Yellow
-}
 
-def draw_detections(frame, detections):
+def draw_detections(frame, detections: list[dict]):
+    """
+    Draw all detections on a copy of the given frame.
 
+    Args:
+        frame: OpenCV BGR image (numpy array).
+        detections: List of detection dicts with keys:
+                    class_id, class, confidence, box [x1, y1, x2, y2].
+
+    Returns:
+        Annotated frame (same array, modified in place).
+    """
     for det in detections:
-
-        x1,y1,x2,y2 = det["box"]
+        x1, y1, x2, y2 = det["box"]
         cls = det["class"]
         conf = det["confidence"]
 
-        color = COLORS.get(cls,(255,255,255))
+        color = CLASS_COLORS.get(cls, DEFAULT_COLOR)
 
-        cv2.rectangle(frame,(x1,y1),(x2,y2),color,2)
+        # Draw bounding box
+        cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
 
+        # Draw label background + text
         label = f"{cls} {conf:.2f}"
-
+        (tw, th), baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.55, 2)
+        label_y = max(th + baseline + 4, y1 - 4)
+        cv2.rectangle(frame, (x1, label_y - th - baseline - 4), (x1 + tw, label_y), color, -1)
         cv2.putText(
             frame,
             label,
-            (x1,max(20,y1-8)),
+            (x1, label_y - baseline),
             cv2.FONT_HERSHEY_SIMPLEX,
-            0.6,
-            color,
-            2
+            0.55,
+            (0, 0, 0),   # Black text on coloured background
+            2,
+            cv2.LINE_AA,
         )
 
     return frame
-
-
-if __name__ == "__main__":
-
-    img = cv2.imread("../../datasets/final/test/images/fire_smoke_1.jpg")
-
-    sample = [
-        {"class":"fire","confidence":0.91,"box":[120,220,240,380]},
-        {"class":"smoke","confidence":0.74,"box":[80,40,300,180]},
-        {"class":"person","confidence":0.83,"box":[260,240,320,420]}
-    ]
-
-    out = draw_detections(img,sample)
-
-    cv2.imshow("Multi Hazard",out)
-    cv2.waitKey(0)

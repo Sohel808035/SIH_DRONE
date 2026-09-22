@@ -1,0 +1,11 @@
+{
+  "num_classes": 6,
+  "classes": {
+    "0": "flood",
+    "1": "smoke",
+    "2": "fire",
+    "3": "debris",
+    "4": "landslide",
+    "5": "person"
+  }
+}
