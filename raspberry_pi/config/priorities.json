@@ -1,0 +1,8 @@
+{
+  "fire": "HIGH",
+  "smoke": "MEDIUM",
+  "flood": "HIGH",
+  "landslide": "HIGH",
+  "debris": "LOW",
+  "person": "CRITICAL"
+}

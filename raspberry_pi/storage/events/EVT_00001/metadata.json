@@ -1,0 +1,11 @@
+{
+    "event_id": "EVT_00001",
+    "hazard": "fire",
+    "confidence": 0.92,
+    "priority": "HIGH",
+    "latitude": 0,
+    "longitude": 0,
+    "altitude": 0,
+    "timestamp": "2026-09-02T19:16:58.141107",
+    "image_path": "..\\storage\\events\\EVT_00001\\frame.jpg"
+}

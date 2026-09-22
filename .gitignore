@@ -1,0 +1,25 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Dataset
+datasets/
+
+# YOLO outputs
+runs/detect/val*/
+runs/detect/predict*/
+
+# Media
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.avi
+
+# Cache
+*.cache
+labels.cache
+
+# VS Code
+.vscode/
